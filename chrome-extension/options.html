@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Project Tracker Extension Settings</title><link rel="stylesheet" href="styles.css"></head>
+<body class="options-page"><main class="options-wrap">
+  <header class="brand"><img src="icons/icon64.png" alt=""><div><h1>Project Tracker Extension</h1><p>One-time connection setup</p></div></header>
+
+  <section class="panel">
+    <h2>Project Tracker URLs</h2>
+    <label for="webAppUrl">Ticket System 7.1 web app URL</label>
+    <input id="webAppUrl" placeholder="https://script.google.com/.../exec">
+    <p class="hint">Used only when the extension opens a ticket in the full dashboard.</p>
+
+    <label for="apiDeploymentId">API executable deployment ID</label>
+    <input id="apiDeploymentId" placeholder="AKfycb...">
+    <p class="hint">Create this once in Apps Script using Deploy → New deployment → API executable.</p>
+
+    <div class="row"><button id="save" class="primary">Save settings</button><button id="test">Test connection</button></div>
+    <div id="status" class="status"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Google OAuth setup</h2>
+    <p>This version connects directly to Project Tracker. The dashboard does not need to be open.</p>
+    <p><strong>Extension ID:</strong><br><code id="extensionId"></code></p>
+    <p id="oauthState" class="hint"></p>
+    <ol class="setup-list">
+      <li>In the same Google Cloud project used by Project Tracker, enable the <strong>Google Apps Script API</strong>.</li>
+      <li>Create an OAuth client of type <strong>Chrome Extension</strong> using the Extension ID above.</li>
+      <li>Copy the generated client ID.</li>
+      <li>Open <code>manifest.json</code> in a text editor and replace the OAuth <code>client_id</code> value with that client ID.</li>
+      <li>Return to <code>chrome://extensions</code> and click <strong>Reload</strong> on Project Tracker.</li>
+      <li>Come back here and click <strong>Test connection</strong>. The first test will ask you to authorize Google once.</li>
+    </ol>
+    <p class="hint">After this one-time setup, normal extension use does not depend on an open Project Tracker tab.</p>
+  </section>
+</main><script src="api.js"></script><script src="options.js"></script></body></html>

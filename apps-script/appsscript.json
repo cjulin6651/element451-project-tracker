@@ -1,0 +1,73 @@
+{
+  "timeZone": "Etc/UTC",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Drive",
+        "version": "v3",
+        "serviceId": "drive"
+      },
+      {
+        "userSymbol": "Gmail",
+        "version": "v1",
+        "serviceId": "gmail"
+      },
+      {
+        "userSymbol": "Chat",
+        "version": "v1",
+        "serviceId": "chat"
+      }
+    ]
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/script.external_request",
+    "https://www.googleapis.com/auth/script.scriptapp",
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/gmail.addons.current.message.readonly",
+    "https://mail.google.com/",
+    "https://www.googleapis.com/auth/chat.messages.readonly",
+    "https://www.googleapis.com/auth/chat.messages.create",
+    "https://www.googleapis.com/auth/chat.memberships.readonly",
+    "https://www.googleapis.com/auth/directory.readonly",
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/chat.spaces.readonly"
+  ],
+  "urlFetchWhitelist": [
+    "https://example.api.451.io/",
+    "https://www.googleapis.com/drive/v3/files/",
+    "https://chat.googleapis.com/",
+    "https://oauth2.googleapis.com/",
+    "https://people.googleapis.com/"
+  ],
+  "addOns": {
+    "common": {
+      "name": "Project Tracker",
+      "logoUrl": "https://example.com/project-tracker-icon-256.png",
+      "homepageTrigger": {
+        "runFunction": "gmailHomepage"
+      },
+      "openLinkUrlPrefixes": [
+        "https://script.google.com/",
+        "https://script.googleusercontent.com/"
+      ],
+      "layoutProperties": {
+        "primaryColor": "#232a30",
+        "secondaryColor": "#7fc4e7"
+      }
+    },
+    "gmail": {
+      "contextualTriggers": [
+        {
+          "unconditional": {},
+          "onTriggerFunction": "onGmailMessageOpen"
+        }
+      ]
+    },
+    "chat": {}
+  }
+}

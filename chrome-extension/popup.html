@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Project Tracker</title><link rel="stylesheet" href="styles.css"></head>
+<body><main class="popup">
+  <header class="brand compact"><img src="icons/icon64.png" alt=""><div><h1>Project Tracker</h1><p id="identity">Loading…</p></div><button id="settings" class="iconbtn" title="Settings">⚙</button></header>
+  <div id="error" class="error hidden"></div><div id="connectWrap" class="connect-wrap hidden"><button id="connectGoogle" class="primary">Connect Google</button><span>One-time authorization</span></div>
+  <section id="sourceCard" class="panel source-card">
+    <div class="eyebrow">Current context</div><div id="sourceTitle" class="source-title">Current browser tab</div><div id="sourceUrl" class="source-url"></div><div id="elementContext" class="context-chip hidden"></div>
+  </section>
+  <section class="panel">
+    <div class="section-head"><div><div class="eyebrow">Capture</div><h2>Add to a ticket</h2></div><div class="capture-badges"><span id="clipboardBadge" class="badge hidden">Clipboard</span><span id="shotCount" class="badge subtle"></span></div></div>
+    <label for="note">Optional note <span class="label-hint">Type @ to tag a teammate</span></label>
+    <div class="note-wrap"><textarea id="note" rows="3" placeholder="What should someone know about this? Try @Alex"></textarea><div id="mentionMenu" class="mention-menu hidden"></div></div>
+    <div id="quoteWrap" class="quote-wrap hidden"><label>Selected text</label><blockquote id="quotePreview"></blockquote><button id="clearQuote" class="textbtn">Remove quote</button></div>
+    <div id="googleSelectionWrap" class="google-selection hidden"><span>Google Docs/Sheets don't expose their live selection to Chrome extensions. Highlight the text or cells, press Ctrl+C (Cmd+C on Mac), then:</span><button id="importGoogleSelection" type="button">Use copied text as quote</button></div>
+    <div class="capture-actions"><button id="captureTab">Capture visible tab</button><button id="useClipboard">Use clipboard screenshot</button><button id="noImage">Clear screenshots</button></div>
+    <div id="imagePreviewWrap" class="image-preview hidden"><div id="shotList" class="shot-list"></div><button id="saveAddAnother" class="secondary-wide" disabled>Save + add another screenshot</button><div class="cache-hint">Keeps this draft for about 2 minutes while you click away and take another screenshot. Nothing is added to the ticket until you choose Add to ticket.</div></div>
+  </section>
+  <section class="panel tickets-panel">
+    <div class="section-head"><div><div class="eyebrow">Destination</div><h2>Choose ticket</h2></div></div>
+    <div id="openTickets" class="ticket-group hidden"><div class="group-label">Open in Chrome</div><div id="openTicketList"></div></div>
+    <div class="seg"><button data-list="mine" class="on">My work</button><button data-list="mentioned">Tagged in</button><button data-list="search">Search</button></div>
+    <div id="searchWrap" class="search-wrap hidden"><input id="search" type="search" placeholder="Search tickets, students, resources…"></div>
+    <div id="ticketList" class="ticket-list"></div>
+  </section>
+  <div class="sticky-actions"><button id="saveCapture" class="primary" disabled>Add to ticket</button><button id="openSelected" disabled>Open ticket</button></div>
+  <details class="create-panel"><summary>Create a new ticket from this page</summary><div class="create-grid"><label>Title<input id="createTitle"></label><label>Type<select id="createType"><option value="">Optional</option></select></label><label>Department<select id="createDepartment"><option value="">Optional</option></select></label><label>Size<select id="createSize"><option value="">Default</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option></select></label><button id="createTicket" class="primary full">Create + add current context</button></div></details>
+</main><script src="api.js"></script><script src="popup.js"></script></body></html>
